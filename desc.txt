@@ -1,0 +1,18 @@
+This application followed the Zell tutorial on CRUD, nodejs mongoDB, later on we added mongoose for
+database conncection, pay a read to their tutorial
+*Features of this application is you can add quotes, then update em and delete them, also we're saving
+quotes in the database later on randering them inside html.
+
+Mongoose conncection
+steps,
+1. we're keeping the mongoose conncetion inside config/db.js, remember how we were conncected on
+server.js by simply calling the function connectDB().
+2. keeping the MONGO_URI inside config/config.env
+
+Mongoose Schema
+1. We kept the schema structure inside the model directory and Character.js file
+2. Then we declared the schema structure in server.js as Character const,
+3. Then we used all mongoose method with that Character const to execute find, create ,deleteOne etc 
+operation.
+
+
