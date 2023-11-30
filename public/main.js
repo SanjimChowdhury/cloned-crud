@@ -17,8 +17,9 @@ update.addEventListener('click', _ => {
         })
 })
 
-const deleteBtn = document.querySelectorAll('.del')
 const messageDiv = document.querySelector('#message')
+const deleteBtn = document.querySelectorAll('.del')
+
 
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteTodo)

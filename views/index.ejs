@@ -27,16 +27,12 @@
                 <span class='del'> Delete </span>
             </li>
             <%} %> -->
-            <% quotes.forEach( el => {%>
-                <li class="quote">
-                    <span>
-                        <%= el.name %>
-                    </span>:
-                    <span>
-                        <%= el.quote %>
-                    </span>
-                    <button onclick="deleteTodo(event)">Delete</button>
-                </li>
+            <% quotes.forEach( el => {%> <!-- here quotes is the collection got from server.js { quotes: document } -->
+            <li class="quote" data-id="<%= el._id %>">
+                <span><%= el.name %></span>:
+                <span><%= el.quote %></span>
+                <button onclick="deleteTodo(event)">Delete</button>
+            </li>
                 <%}) %>
     </ul>
     <div>

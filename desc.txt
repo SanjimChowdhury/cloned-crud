@@ -16,3 +16,16 @@ Mongoose Schema
 operation.
 
 
+#The DELETE before MVC
+1.
+index.els => all the quotes that were saved in the database inside the collection quotes, we brought them
+on line 30, using forEach loop.
+
+<li class="quote" data-id="<%= el._id %>">
+                <span><%= el.name %></span>:
+                <span><%= el.quote %></span>
+                <button onclick="deleteTodo(event)">Delete</button>
+</li>
+here the class="quote" will be used later for event handling,
+^ el._id, here el is each document(individual quote saved inside quotes collection) and here we're
+  taiking the _id as data-id to tie spans and button with a same list

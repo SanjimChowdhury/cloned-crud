@@ -27,8 +27,8 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
     // Use the Mongoose model to query the database
     Character.find()
-        .then(quotes => {
-            res.render('index.ejs', { quotes: quotes });
+        .then(document => {
+            res.render('index.ejs', { quotes: document }); //here document is each individual object saved in the database and quotes is collection(means collection of all documents)
         })
         .catch(error => {
             console.error(error);
