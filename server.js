@@ -7,6 +7,7 @@ const connectDB = require('./config/db')
 const mongoose = require('mongoose');
 //let connectionString = 'mongodb+srv://sanjimchowdhury:LNjEyRdnXRQTenkm@cluster0.xkh0dje.mongodb.net/star-wars-quote?retryWrites=true&w=majority'
 
+const todosController = require('./controllers/todos')
 const Character = require('./models/Character');
 //load config
 dotenv.config({ path: './config/config.env' })
@@ -64,16 +65,7 @@ app.put('/quotes', (req, res) => {
         .catch(error => console.error(error))
 })
 
-app.delete('/quotes', (req, res) => {
-    Character.deleteOne({ name: req.body.name })
-        .then(result => {
-            if (result.deletedCount === 0) {
-                return res.json('No quote to delete')
-            }
-            res.json(`Deleted Darth Vader's quote`)
-        })
-        .catch(error => console.error(error))
-})
+app.delete('/deleteTodo', todosController.deleteTodo)
 //add port
 app.listen(3500, function () {
     console.log('listening on 3000')

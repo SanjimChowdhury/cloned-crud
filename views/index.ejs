@@ -16,7 +16,7 @@
     <div id="message"></div>
     <h2>Quotes</h2>
     <ul class="quotes">
-        <% for(var i=0; i < quotes.length; i++) {%>
+        <!-- <% for(var i=0; i < quotes.length; i++) {%>
             <li class="quote">
                 <span>
                     <%= quotes[i].name %>
@@ -24,9 +24,20 @@
                 <span>
                     <%= quotes[i].quote %>
                 </span>
-
+                <span class='del'> Delete </span>
             </li>
-            <%} %>
+            <%} %> -->
+            <% quotes.forEach( el => {%>
+                <li class="quote">
+                    <span>
+                        <%= el.name %>
+                    </span>:
+                    <span>
+                        <%= el.quote %>
+                    </span>
+                    <button onclick="deleteTodo(event)">Delete</button>
+                </li>
+                <%}) %>
     </ul>
     <div>
         <h2>Darth Vader invades!</h2>
