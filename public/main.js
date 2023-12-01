@@ -42,22 +42,29 @@ async function deleteTodo(event) {
         console.log(err)
     }
 }
-// deleteButton.addEventListener('click', _ => {
-//     fetch('/quotes', {
-//         method: 'delete',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({
-//             name: 'Darth Vader'
-//         })
-//     })
-//         .then(res => {
-//             if (res.ok) return res.json()
-//         })
-//         .then(response => {
-//             if (response === 'No quote to delete') {
-//               messageDiv.textContent = 'No Darth Vader quote to delete'
-//             } else {
-//               window.location.reload(true)
-//             }
-//           })
-// })
+
+//love button
+const loveButtons = document.querySelectorAll('.love');
+
+loveButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const quoteId = button.dataset.id;
+
+        fetch(`/love/${quoteId}`, {
+            method: 'put',
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(res => {
+            if (res.ok) return res.json();
+            throw new Error('Failed to update love count');
+        })
+        .then(response => {
+            // Update the love count on the UI
+            const loveCountElement = button.querySelector('.love-count');
+            loveCountElement.textContent = response.loveCount;
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    });
+});

@@ -28,4 +28,14 @@ on line 30, using forEach loop.
 </li>
 here the class="quote" will be used later for event handling,
 ^ el._id, here el is each document(individual quote saved inside quotes collection) and here we're
-  taiking the _id as data-id to tie spans and button with a same list
+  taking the _id as data-id to tie spans and button with a same list
+
+2.
+public/main.js
+^ on .del button click the event is handled here
+^ for /deleteTodo go to server.js
+
+3.
+controllers/todos.js
+Here is our next work, and we need to require model Character.js
+^ here we called the deleteTodo method to finally delete stuff.

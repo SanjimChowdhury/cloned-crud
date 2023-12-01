@@ -1,8 +1,17 @@
 const Todo = require('../models/Character')
 
 module.exports = {
+    getTodo: async (req, res)=>{
+        try {
+            // Use the Mongoose model to query the database
+            const documents = await Todo.find();
+            res.render('index.ejs', { quotes: documents });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        }
+     },
     deleteTodo: async (req, res)=>{
-        console.log(req.body.todoIdFromJSFile)
         try{
             await Todo.deleteOne({_id: req.body.todoIdFromJSFile})
             console.log('Deleted Todo')

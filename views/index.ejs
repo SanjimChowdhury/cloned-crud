@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>MY APP</title>
 </head>
 
@@ -16,24 +17,20 @@
     <div id="message"></div>
     <h2>Quotes</h2>
     <ul class="quotes">
-        <!-- <% for(var i=0; i < quotes.length; i++) {%>
-            <li class="quote">
+        <% quotes.forEach( el=> {%> <!-- here quotes is the collection got from server.js { quotes: document } -->
+            <li class="quote" data-id="<%= el._id %>">
                 <span>
-                    <%= quotes[i].name %>
+                    <%= el.name %>
                 </span>:
                 <span>
-                    <%= quotes[i].quote %>
+                    <%= el.quote %>
                 </span>
-                <span class='del'> Delete </span>
+                <button class="del">Delete</button>
+                <button class="love" data-id="<%= el._id %>">
+                    <i class="fas fa-heart"></i> <span class="love-count"><%= el.loveCount || 0 %></span>
+                </button>
             </li>
-            <%} %> -->
-            <% quotes.forEach( el => {%> <!-- here quotes is the collection got from server.js { quotes: document } -->
-            <li class="quote" data-id="<%= el._id %>">
-                <span><%= el.name %></span>:
-                <span><%= el.quote %></span>
-                <button onclick="deleteTodo(event)">Delete</button>
-            </li>
-                <%}) %>
+            <%}) %>
     </ul>
     <div>
         <h2>Darth Vader invades!</h2>
@@ -43,8 +40,8 @@
     <div>
         <h2>Remove Darth Vader!</h2>
         <p>
-          Delete one Darth Vader's quote. Does nothing if there are no more Darth
-          Vader's quote
+            Delete one Darth Vader's quote. Does nothing if there are no more Darth
+            Vader's quote
         </p>
         <button id="delete-button">Delete Darth Vader's quote</button>
     </div>
